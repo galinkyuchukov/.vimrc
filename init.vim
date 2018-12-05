@@ -41,9 +41,7 @@ let g:ycm_complete_in_strings = 0
 let g:ycm_enable_diagnostic_highlighting = 0
 set completeopt-=preview
 let g:ycm_add_preview_to_completeopt = 0
-" Prevent YouCompleteMe to insert new line after suggestion is selected
-" from the popup list
-":inoremap <expr> <CR> pumvisible() ? "<C-y><C-g>" : "<C-g>u<CR>"
+let g:ycm_key_list_stop_completion = ['<CR>']
 
 " Visual Settings
 syntax on
