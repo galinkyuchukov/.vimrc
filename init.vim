@@ -2,8 +2,8 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin('~/.config/nvim/bundle')
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin('~/.vim/bundle')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
@@ -14,6 +14,10 @@ Plugin 'kamykn/skyknight'
 " Interface and Plugins
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
 
 " Syntax and Languages
 Plugin 'jelera/vim-javascript-syntax'
@@ -27,11 +31,23 @@ Plugin 'vim-scripts/CSApprox'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" Airline
+let g:airline_theme = 'dark_minimal'
+let g:airline#extensions#branch#enabled = 1
+let g:airline_skip_empty_sections = 1
+
 " NERD Tree specific
-autocmd vimenter * NERDTree
-map <C-n> :NERDTreeToggle<CR>
+autocmd vimenter * NERDTreeTabsToggle
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd VimEnter * wincmd p
+let g:NERDTreeIgnore=['^\.', '\~$', '^\~']
+let g:nerdtree_tabs_open_on_new_tab = 1
+let g:nerdtree_tabs_autoclose = 1
+let g:nerdtree_tabs_autofind = 1
+let g:nerdtree_tabs_open_on_console_startup = 1
+let g:NERDTreeChDirMode = 2
+let g:NERDTreeWinSize = 30
+let g:NERDTreeShowHidden = 0
 
 " YouCompleteMe
 let g:ycm_min_num_of_chars_for_completion = 3
@@ -73,5 +89,10 @@ colorscheme skyknight
 hi Visual term=bold ctermbg=Blue guibg=Grey
 
 " Mappings
-nnoremap <silent> :config :edit $MYVIMRC<CR>
+nmap <C-b> :NERDTreeTabsToggle<CR>
+noremap <silent> :config :edit $MYVIMRC<CR>
 nnoremap <silent> <F3> :NERDTreeToggle<CR>
+nnoremap <silent> <C-x> :tabclose<CR>
+nnoremap <C-Left> :tabprev<CR>
+nnoremap <C-Right> :tabnext<CR>
+nnoremap <C-n> :tabnew<CR>
