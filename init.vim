@@ -91,7 +91,6 @@ hi Visual term=bold ctermbg=Blue guibg=Grey
 " Mappings
 nmap <C-b> :NERDTreeTabsToggle<CR>
 noremap <silent> :config :edit $MYVIMRC<CR>
-nnoremap <silent> <F3> :NERDTreeToggle<CR>
 nnoremap <silent> <C-x> :tabclose<CR>
 nnoremap <C-Left> :tabprev<CR>
 nnoremap <C-Right> :tabnext<CR>
