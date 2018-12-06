@@ -2,8 +2,8 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin('~/.config/nvim/bundle')
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin('~/.vim/bundle')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
@@ -69,10 +69,11 @@ set tabstop=4               " number of columns occupied by a tab character
 set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
 set expandtab               " converts tabs to white space
 set shiftwidth=4            " width for autoindents
-"set autoindent              " indent a new line the same amount as the line just typed
+"set autoindent             " indent a new line the same amount as the line just typed
 set number                  " add line numbers
 set wildmode=longest,list   " get bash-like tab completions
 set cc=80                   " set an 80 column border for good coding style
+set splitbelow              " make all horizontal splits below
 
 if has("gui_running")
 else
@@ -88,10 +89,40 @@ set t_Co=256
 colorscheme skyknight 
 hi Visual term=bold ctermbg=Blue guibg=Grey
 
+""""""""""""""""
 " Mappings
+""""""""""""""""
+
+" Toggle NERD Tree pane
 nmap <C-b> :NERDTreeTabsToggle<CR>
+
+" Fast open vim/nvim rc file
 noremap <silent> :config :edit $MYVIMRC<CR>
+
+" Close tab and all its windows
 nnoremap <silent> <C-x> :tabclose<CR>
+
+" Go to previous tab
 nnoremap <C-Left> :tabprev<CR>
+
+" Go to next tab
 nnoremap <C-Right> :tabnext<CR>
+
+" Create/Open new tab
 nnoremap <C-n> :tabnew<CR>
+
+" Prevent Ctrl+s terminal freeze and save file instead
+" For this to work put this line in ~/.bashrc or ~/.zshrc
+inoremap <C-s> <Esc>:w<CR>
+
+" Open terminal window (:terminal) in a split window below current
+nnoremap <C-\> <Esc>:set termwinsize=10x0<CR>:below terminal<CR>
+
+" Close/Toggle opened terminal window (:terminal)
+tnoremap <C-\> <C-\><C-n>:q!<CR>
+
+" Split window horizontally
+nnoremap <C-Down> :sp<CR>
+
+" Split window vertically
+nnoremap <C-Right> :vs<CR>
