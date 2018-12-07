@@ -75,6 +75,9 @@ set wildmode=longest,list   " get bash-like tab completions
 set cc=80                   " set an 80 column border for good coding style
 set splitbelow              " make all horizontal splits below
 
+" Normalize Backspace in Insert mode
+set backspace=indent,eol,start
+
 if has("gui_running")
 else
   let g:CSApprox_loaded = 1
@@ -116,6 +119,7 @@ nnoremap <C-n> :tabnew<CR>
 inoremap <C-s> <Esc>:w<CR>
 
 " Open terminal window (:terminal) in a split window below current
+" termwinsize is vim only
 nnoremap <C-\> <Esc>:set termwinsize=10x0<CR>:below terminal<CR>
 
 " Close/Toggle opened terminal window (:terminal)
