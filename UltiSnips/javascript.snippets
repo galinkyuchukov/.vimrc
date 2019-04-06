@@ -1,0 +1,23 @@
+snippet func "function()"
+function (){
+  $0
+}
+endsnippet
+
+snippet log "console.log()"
+console.log($0);
+endsnippet
+
+snippet class
+class $1 {
+  constructor($2) {
+	$3
+  }
+}
+endsnippet
+
+snippet promise
+new Promise((resolve, reject) => {
+	$1
+})
+endsnippet
