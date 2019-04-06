@@ -151,3 +151,13 @@ nnoremap <C-Q> <C-W><C-Q>
 
 " Move split into its own tab
 nnoremap <C-w> <C-W><S-T>
+
+" Snippets
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsListSnippets="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" Default snippets folder relative to the runtime folder $HOME/.vimrc
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
