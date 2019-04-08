@@ -84,7 +84,7 @@ set wildmenu
 
 if has("gui_running")
 else
-  let g:CSApprox_loaded = 1
+    let g:CSApprox_loaded = 1
 endif
 
 set title
@@ -151,6 +151,9 @@ nnoremap <C-Q> <C-W><C-Q>
 
 " Move split into its own tab
 nnoremap <C-w> <C-W><S-T>
+
+" Auto-format entire file and move the cursor to its position
+noremap <F2> gg=<S-G>``
 
 " Snippets
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
