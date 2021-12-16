@@ -3,6 +3,7 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.fzf
 call vundle#begin('~/.vim/bundle')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -18,6 +19,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'junegunn/fzf.vim'
 
 " Syntax and Languages
 Plugin 'jelera/vim-javascript-syntax'
@@ -38,17 +41,19 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline_skip_empty_sections = 1
 
 " NERD Tree specific
-autocmd vimenter * NERDTreeTabsToggle
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Keep NERD Tree closed on vim start
+" autocmd vimenter * NERDTreeTabsToggle
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd VimEnter * wincmd p
 let g:NERDTreeIgnore=['^\.', '\~$', '^\~']
 let g:nerdtree_tabs_open_on_new_tab = 1
 let g:nerdtree_tabs_autoclose = 1
 let g:nerdtree_tabs_autofind = 1
-let g:nerdtree_tabs_open_on_console_startup = 1
+let g:nerdtree_tabs_open_on_console_startup = 0 " Keep NERD Tree closed on vim start
 let g:NERDTreeChDirMode = 2
 let g:NERDTreeWinSize = 30
-let g:NERDTreeShowHidden = 0
+let g:NERDTreeShowHidden = 1
 
 " YouCompleteMe
 let g:ycm_min_num_of_chars_for_completion = 3
@@ -101,7 +106,10 @@ hi Visual term=bold ctermbg=Blue guibg=Grey
 """"""""""""""""
 
 " Toggle NERD Tree pane
-nmap <C-b> :NERDTreeTabsToggle<CR>
+" nmap <C-b> :NERDTreeTabsToggle<CR>
+
+" Open FZF window (ESC closes it)
+nmap <C-b> :Files<CR>
 
 " Fast open vim/nvim rc file
 noremap <silent> :config :edit $MYVIMRC<CR>
@@ -164,3 +172,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Default snippets folder relative to the runtime folder $HOME/.vimrc
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+
+" FZF
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
